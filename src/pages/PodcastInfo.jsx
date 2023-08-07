@@ -10,7 +10,7 @@ import {
 } from "@material-tailwind/react";
 import { NavbarTop } from "../components";
 
-export default function PodcastInfo() {
+export default function PodcastInfo({ session }) {
   const { id } = useParams();
   const [detailsData, setDetailsData] = useState(null);
 
@@ -29,7 +29,6 @@ export default function PodcastInfo() {
     // Loading state or placeholder content
     return <div>Loading...</div>;
   }
-
 
   return (
     <>

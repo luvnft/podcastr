@@ -11,7 +11,6 @@ export default function Discover({ session }) {
     const [sortBy, setSortBy] = useState(''); // State to store the current sorting option
     const [query, setQuery] = useState('')
 
-
     useEffect(() => {
         // Fetch data from the podcast API
         fetch('https://podcast-api.netlify.app/shows')

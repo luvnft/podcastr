@@ -28,7 +28,7 @@ export default function NavbarTop({session}) {
 					<Link to={"/"} session={session} >Discover</Link>
 					</Typography>
 					<Typography variant="paragraph" className='hover:text-lightBlue'>
-						Favourites
+					<Link to={"/favorites"} session={session} >Favourites</Link>
 					</Typography>
                     <Typography 
                     onClick={() => supabase.auth.signOut()}
