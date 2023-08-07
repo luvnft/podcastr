@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-[100vw] overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <Router>
         <Routes>
           <Route

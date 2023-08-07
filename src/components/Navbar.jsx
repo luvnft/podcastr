@@ -109,7 +109,7 @@ export default function NavbarTop({ session }) {
             variant="gradient"
             size="sm"
             fullWidth
-            className="mb-2 bg-bodyRed"
+            className="mb-2 bg-bodyRed cursor-none"
           >
             <span>Sign Out</span>
           </Button>
