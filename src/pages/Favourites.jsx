@@ -10,6 +10,8 @@ export default function Favourites({ session }) {
     const [fetchError, setFetchError] = useState(null);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [sortBy, setSortBy] = useState("");
+
+    console.log(session.user.id)
   
     useEffect(() => {
       const fetchFavourites = async () => {
@@ -54,6 +56,16 @@ export default function Favourites({ session }) {
         setFavourites(sortedData);
       };
 
+      const handleEpisodeRemove = (episodeId) => {
+        // Remove the episode from the list
+        const updatedFavourites = favourites.filter(
+          (episode) => episode.episode_id !== episodeId
+        );
+    
+        // Update the state to reflect the removed episode
+        setFavourites(updatedFavourites);
+      };
+
   return (
     <>
       <NavbarTop />
@@ -79,7 +91,7 @@ export default function Favourites({ session }) {
         {fetchError && <div>{fetchError}</div>}
         {favourites &&
           Object.keys(favourites).map((key) => {
-            return <FavCard key={key} favourites={favourites[key]} />;
+            return <FavCard key={key} favourites={favourites[key]} onRemove={handleEpisodeRemove} />;
           })}
       </div>
     </>
