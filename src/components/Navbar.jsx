@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Navbar, Typography } from "@material-tailwind/react";
 import  supabase from '../supabaseClient'
+import { Link } from 'react-router-dom';
 
-export default function NavbarTop() {
+export default function NavbarTop({session}) {
 	const [menuOpen, setMenuOpen] = useState(false);
 
 	const toggleMenu = () => {
@@ -11,7 +12,7 @@ export default function NavbarTop() {
 
 
 	return (
-		<Navbar className="w-full overflow-x-hidden px-10 py-0 text-black rounded-none">
+		<Navbar className="w-[100vw] overflow-x-hidden px-10 py-0 text-black rounded-none">
 			<div className="flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900 ">
 				<Typography
 					as="a"
@@ -24,7 +25,7 @@ export default function NavbarTop() {
 				<div className={`flex justify-center items-center gap-10 font-semibold cursor-pointer md:flex ${menuOpen ? 'flex-col-reverse' : 'hidden'}`}>
 
 					<Typography variant="paragraph" className='hover:text-lightBlue'>
-						Discover
+					<Link to={"/"} session={session} >Discover</Link>
 					</Typography>
 					<Typography variant="paragraph" className='hover:text-lightBlue'>
 						Favourites
