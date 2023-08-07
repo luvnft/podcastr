@@ -11,7 +11,7 @@ export default function NavbarTop() {
 
 
 	return (
-		<Navbar className="w-[100vw] px-10 py-0 text-black rounded-none">
+		<Navbar className="w-full overflow-x-hidden px-10 py-0 text-black rounded-none">
 			<div className="flex flex-wrap items-center justify-between gap-y-4 text-blue-gray-900 ">
 				<Typography
 					as="a"

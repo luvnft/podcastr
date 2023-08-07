@@ -17,7 +17,7 @@ function App() {
   }, []);
 
   return (
-    <div>
+    <div className="mx-0">
       {!session ? (
         <Login supabaseClient={supabase} />
       ) : (

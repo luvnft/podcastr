@@ -18,7 +18,7 @@ export default function PreviewCard({ preview }) {
 
     return (
         <div className="flex flex-wrap justify-between gap-2 ">
-            <Card className="w-full max-w-[16rem] shadow-lg p-2 rounded-none">
+            <Card className="w-full max-w-[16rem] shadow-lg p-2 rounded-sm">
                 <CardHeader
                     floated={false}
                     color="blue-gray"

@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { PreviewCard, SortButtons, NavbarTop } from '../components';
 import {Input} from "@material-tailwind/react";
 import Fuse from 'fuse.js'
+import '../../src/index.css'
 
-export default function Discover({ session }) {
+export default function Discover() {
 
     const [data, setData] = useState([]); // State to store the podcast data
     const [isLoading, setIsLoading] = useState(true); // State to store the loading status
@@ -84,7 +85,7 @@ export default function Discover({ session }) {
                     <SortButtons onSort={handleSort} />
                 </div>
                 <div className='flex justify-center'>
-                    <div className='flex flex-wrap mx-auto sm:justify-start justify-center gap-10'>
+                    <div className='flex flex-wrap mx-4 sm:justify-start justify-center gap-10'>
                         {podcastResults.map((preview, i) => (
                             <PreviewCard key={preview.id} preview={preview} i={i} />
                         ))}
