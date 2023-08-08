@@ -1,6 +1,7 @@
 import { Auth } from "@supabase/auth-ui-react";
 import supabase from "../supabaseClient";
 import { ThemeSupa } from "@supabase/auth-ui-shared";
+import podLogo from "../assets/pod-logo.png"
 
 function Login() {
   return (
@@ -11,6 +12,8 @@ function Login() {
           margin: "auto"
         }}
       >
+        <img src={podLogo} className="h-[35vh] w-[20vw]"/>
+        
         <Auth
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
