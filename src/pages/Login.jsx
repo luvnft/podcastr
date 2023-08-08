@@ -12,7 +12,7 @@ function Login() {
           margin: "auto"
         }}
       >
-        <img src={podLogo} className="h-[35vh] w-[20vw]"/>
+        <img src={podLogo} className="md:h-[32vh] md:w-[20vw] m-auto"/>
         
         <Auth
           supabaseClient={supabase}
