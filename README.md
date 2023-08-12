@@ -26,7 +26,7 @@ To run the Podcast App locally, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/kgotsosm/podcastr/git`
 
-2. Navigate to the project folder: `cd your-repo`
+2. Navigate to the project folder: `cd podcastr`
 
 3. Install the dependencies: `npm install`
 
