@@ -18,7 +18,7 @@ Welcome to the Podcastr! This app allows users to listen to their favorite podca
 
 ## Demo
 
-The app is hosted on Netlify: [https://ksm-podcastr.netlify.com](https://ksm-podcastr.netlify.com)
+The app is hosted on Cloudflare: [Visit site](https://podcastr.pages.dev/)
 
 ## Installation
 
