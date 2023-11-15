@@ -4,6 +4,7 @@ import NavbarTop from './Navbar.jsx'
 import SeasonPreview from './SeasonPreview.jsx'
 import Star from "./Star.jsx"
 import FavCard from './FavCard.jsx'
+import { Spinner } from '@material-tailwind/react'
 export {
     PreviewCard,
     SortButtons,
@@ -11,4 +12,5 @@ export {
     SeasonPreview,
     Star,
     FavCard,
+    Spinner,
 }

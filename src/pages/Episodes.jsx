@@ -1,5 +1,6 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { Button, Card, CardHeader, Typography } from "@material-tailwind/react";
+import { Button, Card, CardHeader, Typography, Spinner } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
 import supabase from "../supabaseClient";
 import { NavbarTop } from "../components/index.js";
@@ -20,8 +21,10 @@ export default function Episodes({ session }) {
   }, [id]);
 
   if (detailsData === null) {
-    return <div>Loading...</div>;
+    return <Spinner className="h-12 w-12" />
+  
   }
+
 
   const formattedTime = new Date().toLocaleString('en-US', {
     year: 'numeric',
@@ -52,6 +55,7 @@ export default function Episodes({ session }) {
     }
   };
 
+
   const curSeasonEps = detailsData.seasons[seasonNumber - 1].episodes;
   const seasonPic = detailsData.seasons[seasonNumber - 1].image;
 
@@ -81,6 +85,7 @@ export default function Episodes({ session }) {
         >
           Season {seasonNumber}
         </Typography>
+        <button onClick={() => console.log(session.user.id)}></button>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3">
           {curSeasonEps.map((episode, index) => (

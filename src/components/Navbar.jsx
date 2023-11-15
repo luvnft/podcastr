@@ -41,6 +41,23 @@ export default function NavbarTop({ session }) {
     </ul>
   );
 
+  const mobileNavList = (
+    <div>
+      {navList}
+      <Button
+        onClick={() => {
+          supabase.auth.signOut();
+          setOpenNav(false); // Close the mobile navigation after signing out
+        }}
+        variant="gradient"
+        size="sm"
+        className="bg-bodyRed"
+      >
+        <span>Sign Out</span>
+      </Button>
+    </div>
+  );
+
   return (
     <Navbar className="mx-auto w-[100vw] py-2 px-4 lg:px-8 lg:py-4">
       <div className="container mx-auto flex items-center justify-between text-blue-gray-900">
@@ -51,12 +68,15 @@ export default function NavbarTop({ session }) {
           className="py-1.5 text-2xl text-darkBlue font-bold"
         >
           <Link to={"/"} session={session}>
-          Podcastr
-        </Link>
+            Podcastr
+          </Link>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
         <Button
-          onClick={() => supabase.auth.signOut()}
+          onClick={() => {
+            supabase.auth.signOut();
+            setOpenNav(false);
+          }}
           variant="gradient"
           size="sm"
           className="hidden lg:inline-block bg-bodyRed"
@@ -102,18 +122,7 @@ export default function NavbarTop({ session }) {
         </IconButton>
       </div>
       <MobileNav open={openNav}>
-        <div className="container mx-auto">
-          {navList}
-          <Button
-		        onClick={() => supabase.auth.signOut()}
-            variant="gradient"
-            size="sm"
-            fullWidth
-            className="mb-2 bg-bodyRed cursor-none"
-          >
-            <span>Sign Out</span>
-          </Button>
-        </div>
+        <div className="container mx-auto">{mobileNavList}</div>
       </MobileNav>
     </Navbar>
   );
