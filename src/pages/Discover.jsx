@@ -66,7 +66,7 @@ export default function Discover({ session }) {
   return (
     <div>
       <NavbarTop />
-      <div className="flex flex-col gap-4 md:flex-row md:justify-between p-3 z-1000 ">
+      <div className="flex flex-col mt-4 gap-4 md:flex-row md:justify-between p-3 z-1000 ">
         <h1 className="text-slate-600 font-bold text-3xl m-left-20">
           Discover
         </h1>

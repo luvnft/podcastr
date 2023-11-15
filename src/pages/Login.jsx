@@ -36,7 +36,7 @@ function Login() {
         
         <Auth
           supabaseClient={supabase}
-          view="sign_up"
+          view="sign_in"
           appearance={{
             theme: ThemeSupa,
             variables: {
