@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { PreviewCard, SortButtons, NavbarTop } from "../components";
 import { Input } from "@material-tailwind/react";
 import Fuse from "fuse.js";
-import Spinner from "@material-tailwind/react";
+import { PulseLoader } from "react-spinners";
 import "../../src/index.css";
 
 export default function Discover({ session }) {
   const [data, setData] = useState([]); // State to store the podcast data
   const [isLoading, setIsLoading] = useState(true); // State to store the loading status
-  const [sortBy, setSortBy] = useState(""); // State to store the current sorting option
   const [query, setQuery] = useState("");
 
   useEffect(() => {
@@ -27,7 +26,11 @@ export default function Discover({ session }) {
   }, []);
 
   if (isLoading) {
-    return <h1>Loading</h1>;
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <PulseLoader color="#1E3A8A" size={15} margin={2} />
+      </div>
+    );
   }
 
   if (!data.length) {

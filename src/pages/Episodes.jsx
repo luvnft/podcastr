@@ -1,12 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { Button, Card, CardHeader, Typography, Spinner } from "@material-tailwind/react";
+import { Button, Card, CardHeader, Typography } from "@material-tailwind/react";
 import { useParams } from "react-router-dom";
+import { PulseLoader } from 'react-spinners';
 import supabase from "../supabaseClient";
 import { NavbarTop } from "../components/index.js";
 
 export default function Episodes({ session }) {
   const [detailsData, setDetailsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const { id, seasonNumber } = useParams();
 
   useEffect(() => {
@@ -16,13 +18,20 @@ export default function Episodes({ session }) {
       .then((response) => response.json())
       .then((data) => {
         setDetailsData(data);
+        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   }, [id]);
 
-  if (detailsData === null) {
-    return <Spinner className="h-12 w-12" />
-  
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <PulseLoader color="#1E3A8A" size={15} margin={2} />
+      </div>
+    );
   }
 
 

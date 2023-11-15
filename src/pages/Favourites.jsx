@@ -6,65 +6,65 @@ import { RWebShare } from "react-web-share";
 import AiOutlineShareAlt from "@meronex/icons/ai/AiOutlineShareAlt";
 
 export default function Favourites({ session }) {
-    const [favourites, setFavourites] = useState([]);
-    const [fetchError, setFetchError] = useState(null);
-    const [dataLoaded, setDataLoaded] = useState(false);
-    const [sortBy, setSortBy] = useState("");
+  const [favourites, setFavourites] = useState([]);
+  const [fetchError, setFetchError] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [sortBy, setSortBy] = useState("");
 
-    console.log(session.user.id)
-  
-    useEffect(() => {
-      const fetchFavourites = async () => {
-        try {
-          const user_id = session.user.id; 
-          
-          const { data, error } = await supabase
-            .from("favorites")
-            .select("*")
-            .eq("user_id", user_id);
-  
-          if (error) {
-            setFetchError(error.message);
-            console.log("Error fetching favourites data:", error);
-            return;
-          } else {
-            setDataLoaded(true);
-            setFavourites(data || []); // Set the array directly
-          }
-        } catch (error) {
-          console.error("Error fetching favourites data:", error);
+  console.log(session.user.id);
+
+  useEffect(() => {
+    const fetchFavourites = async () => {
+      try {
+        const user_id = session.user.id;
+
+        const { data, error } = await supabase
+          .from("favorites")
+          .select("*")
+          .eq("user_id", user_id);
+
+        if (error) {
+          setFetchError(error.message);
+          console.log("Error fetching favourites data:", error);
+          return;
+        } else {
+          setDataLoaded(true);
+          setFavourites(data || []); // Set the array directly
         }
-      };
-  
-      fetchFavourites();
-    }, []);
+      } catch (error) {
+        console.error("Error fetching favourites data:", error);
+      }
+    };
 
-    const handleSort = (sortType) => {
-        setSortBy(sortType);
-        const sortedData = [...favourites];
-      
-        if (sortType === 'A-Z') {
-          sortedData.sort((a, b) => a.episode_title.localeCompare(b.episode_title));
-        } else if (sortType === 'Z-A') {
-          sortedData.sort((a, b) => b.episode_title.localeCompare(a.episode_title));
-        } else if (sortType === 'Newest') {
-          sortedData.sort((a, b) => new Date(b.time) - new Date(a.time));
-        } else if (sortType === 'Oldest') {
-          sortedData.sort((a, b) => new Date(a.time) - new Date(b.time));
-        }
-      
-        setFavourites(sortedData);
-      };
+    fetchFavourites();
+  }, []);
 
-      const handleEpisodeRemove = (episodeId) => {
-        // Remove the episode from the list
-        const updatedFavourites = favourites.filter(
-          (episode) => episode.episode_id !== episodeId
-        );
-    
-        // Update the state to reflect the removed episode
-        setFavourites(updatedFavourites);
-      };
+  const handleSort = (sortType) => {
+    setSortBy(sortType);
+    const sortedData = [...favourites];
+
+    if (sortType === "A-Z") {
+      sortedData.sort((a, b) => a.episode_title.localeCompare(b.episode_title));
+    } else if (sortType === "Z-A") {
+      sortedData.sort((a, b) => b.episode_title.localeCompare(a.episode_title));
+    } else if (sortType === "Newest") {
+      sortedData.sort((a, b) => new Date(b.time) - new Date(a.time));
+    } else if (sortType === "Oldest") {
+      sortedData.sort((a, b) => new Date(a.time) - new Date(b.time));
+    }
+
+    setFavourites(sortedData);
+  };
+
+  const handleEpisodeRemove = (episodeId) => {
+    // Remove the episode from the list
+    const updatedFavourites = favourites.filter(
+      (episode) => episode.episode_id !== episodeId
+    );
+
+    // Update the state to reflect the removed episode
+    setFavourites(updatedFavourites);
+  };
 
   return (
     <>
@@ -87,11 +87,25 @@ export default function Favourites({ session }) {
         >
           <AiOutlineShareAlt className="text-3xl mb-5 text-slate-600 cursor-pointer" />
         </RWebShare>
+
         {!dataLoaded && <div>Loading...</div>}
         {fetchError && <div>{fetchError}</div>}
-        {favourites &&
+
+        {/* Check if favorites array is empty */}
+        {favourites.length === 0 && dataLoaded && !fetchError && (
+          <div>No episodes added to favourites yet!</div>
+        )}
+
+        {/* Display favorite cards if the array is not empty */}
+        {favourites.length > 0 &&
           Object.keys(favourites).map((key) => {
-            return <FavCard key={key} favourites={favourites[key]} onRemove={handleEpisodeRemove} />;
+            return (
+              <FavCard
+                key={key}
+                favourites={favourites[key]}
+                onRemove={handleEpisodeRemove}
+              />
+            );
           })}
       </div>
     </>

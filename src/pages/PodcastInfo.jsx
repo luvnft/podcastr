@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { SeasonPreview } from "../components/index.js";
 import { useEffect, useState } from "react";
+import { PulseLoader } from "react-spinners";
 
 import {
   Card,
@@ -13,21 +14,29 @@ import { NavbarTop } from "../components";
 export default function PodcastInfo({ session }) {
   const { id } = useParams();
   const [detailsData, setDetailsData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const apiUrl = `https://podcast-api.netlify.app/id/${id}`;
-
+  
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
         setDetailsData(data);
+        setIsLoading(false);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        setIsLoading(false);
+      });
   }, [id]);
 
-  if (!detailsData) {
-    // Loading state or placeholder content
-    return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <PulseLoader color="#1E3A8A" size={15} margin={2} />
+      </div>
+    );
   }
 
   return (

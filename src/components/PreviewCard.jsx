@@ -19,11 +19,13 @@ export default function PreviewCard({ preview, session }) {
     <div className="flex flex-wrap justify-between gap-2 ">
       <Card className="w-full max-w-[16rem] shadow-lg p-2 rounded-sm">
         <CardHeader floated={false} color="blue-gray" className="rouned-none">
-          <img
-            src={preview.image}
-            alt={preview.title}
-            className="rounded-none"
-          />
+          <Link to={`/details/${preview.id}`}>
+            <img
+              src={preview.image}
+              alt={preview.title}
+              className="rounded-none cursor-pointer"
+            />
+          </Link>
           <div className="to-bg-black-10 absolute inset-0 h-full w-full" />
         </CardHeader>
         <CardBody>
