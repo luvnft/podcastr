@@ -9,6 +9,7 @@ export default function Discover({ session }) {
   const [data, setData] = useState([]); // State to store the podcast data
   const [isLoading, setIsLoading] = useState(true); // State to store the loading status
   const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState("");
 
   useEffect(() => {
     // Fetch data from the podcast API
