@@ -23,7 +23,7 @@ function Login() {
       >
         <img src={podLogo} className="md:h-[34vh] md:w-[20vw] "/>
         <button 
-        className="flex justify-center bg-sky-400 mx-auto p-2"
+        className="flex justify-center bg-#E8B75A mx-auto p-2"
         onClick={handleShowCredentialsClick}>
         {showDummyCredentials ? "Hide Dummy Credentials" : "Click For Dummy Credentials"}
       </button>
@@ -42,7 +42,7 @@ function Login() {
             variables: {
               default: {
                 colors: {
-                  brand: "#48B9A5",
+                  brand: "#E8B75A",
                   brandButtonText: "black",
                   defaultButtonText: "white",
                   defaultButtonBackground: "white",

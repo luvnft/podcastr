@@ -35,7 +35,7 @@ export default function NavbarTop({ session }) {
           session={session}
           className="flex items-center hover:text-lightBlue"
         >
-          Favourites
+          Fav
         </Link>
       </Typography>
     </ul>
@@ -68,7 +68,7 @@ export default function NavbarTop({ session }) {
           className="py-1.5 text-2xl text-darkBlue font-bold"
         >
           <Link to={"/"} session={session}>
-            Podcastr
+          🎙️ Podcastr
           </Link>
         </Typography>
         <div className="hidden lg:block">{navList}</div>

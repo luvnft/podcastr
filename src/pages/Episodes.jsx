@@ -128,7 +128,7 @@ export default function Episodes({ session }) {
                       onClick={() => addToFavorites(episode)}
                       className="bg-yellow-500 hover:text-white w-40 p-2"
                     >
-                      Add Favourite
+                      Add Fav
                     </Button>
                   </div>
                 </div>

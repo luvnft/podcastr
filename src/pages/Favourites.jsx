@@ -72,7 +72,7 @@ export default function Favourites({ session }) {
       <div className="p-4">
         <div className="flex justify-between gap-10 items-center w-[87vw] md:flex-row flex-col mt-4 mb-4">
           <h1 className="text-slate-600 font-bold text-3xl m-left-20">
-            Favourites
+            Favs
           </h1>
           <SortButtons onSort={handleSort} />
         </div>
@@ -93,7 +93,7 @@ export default function Favourites({ session }) {
 
         {/* Check if favorites array is empty */}
         {favourites.length === 0 && dataLoaded && !fetchError && (
-          <div>No episodes added to favourites yet!</div>
+          <div>No episodes added to fav yet!</div>
         )}
 
         {/* Display favorite cards if the array is not empty */}
